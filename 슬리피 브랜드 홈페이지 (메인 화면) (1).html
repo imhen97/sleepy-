@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>슬리피 | 오늘 밤을 편안하게</title>
+<meta name="description" content="슬리피의 브랜드와 제품을 소개합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f1f0fa;--surface:#ffffff;--ink:#1d1b3a;--muted:#5a5878;--line:#d9d7ee;
+  --night:#1d1b3a;--on-night:#f3f1ff;--moon:#f6d98a;--accent:#4b44b8;--on-accent:#ffffff;--skel:#e3e1f3;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#12112a;--surface:#1c1b3d;--ink:#eeecff;--muted:#aaa8cc;--line:#34325f;
+  --night:#0b0a1d;--accent:#9b95ff;--on-accent:#12112a;--skel:#2a2954;}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12112a;--surface:#1c1b3d;--ink:#eeecff;--muted:#aaa8cc;--line:#34325f;--night:#0b0a1d;--accent:#9b95ff;--on-accent:#12112a;--skel:#2a2954}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.7 "Noto Sans KR",system-ui,sans-serif;word-break:keep-all}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--moon);color:#1d1b3a;padding:8px 14px;border-radius:8px;z-index:30}
+.skip:focus{left:8px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--night);color:var(--on-night)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:700 1.25rem "Gowun Dodum",sans-serif;text-decoration:none;display:flex;gap:8px;align-items:center}
+.logo i{width:18px;height:18px;border-radius:50%;background:var(--moon);box-shadow:-6px 0 0 0 var(--night) inset;display:inline-block}
+nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav a{display:block;padding:10px 12px;text-decoration:none;border-radius:8px;font-weight:500;min-height:44px;line-height:24px}
+nav a:hover{background:rgba(255,255,255,.12)}
+.hero{background:var(--night);color:var(--on-night);padding:56px 0 72px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-40px;width:240px;height:240px;border-radius:50%;background:var(--moon);box-shadow:-56px 0 0 0 var(--night) inset;opacity:.95}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(2rem,7vw,3.4rem);max-width:12em;margin-top:96px}
+.hero p{max-width:30em;color:#c9c6ee;margin:16px 0 28px;font-size:1.05rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:700 1rem "Noto Sans KR",sans-serif;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-moon{background:var(--moon);color:#1d1b3a}
+.btn-main{background:var(--accent);color:var(--on-accent)}
+.btn-line{border-color:var(--line);background:transparent;color:var(--ink)}
+.btn[aria-disabled="true"],.btn:disabled{background:var(--skel);color:var(--muted);cursor:not-allowed}
+section{padding:56px 0}
+h2{font-size:1.7rem;margin-bottom:20px}
+.product{display:grid;gap:24px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:24px;margin-top:-48px;position:relative;z-index:2}
+.pimg{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(160deg,var(--night),#3b3688);display:grid;place-items:center;color:var(--moon);font:700 1.1rem "Gowun Dodum",sans-serif}
+.pimg img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+.product h3{font-size:1.5rem;margin-bottom:8px}
+.product p{color:var(--muted);margin:0 0 16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 20px}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.92rem}
+.note{font-size:.9rem;color:var(--muted);margin-top:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:10px;padding:0 18px}
+.faq summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-weight:500;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;font-size:1.4rem;color:var(--accent)}
+.faq details[open] summary::after{content:"−"}
+.faq details p{margin:0 0 16px;color:var(--muted)}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.contact p{margin:0;color:var(--muted)}
+.state{border:2px dashed var(--line);border-radius:16px;padding:28px;text-align:center;color:var(--muted)}
+.state p{margin:0 0 14px}
+.skel{background:var(--skel);border-radius:10px;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5}}
+@media (prefers-reduced-motion:reduce){.skel{animation:none}html{scroll-behavior:auto}}
+footer{background:var(--night);color:#b9b6e0;padding:28px 0;font-size:.9rem}
+.dev{position:fixed;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:25;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px;display:flex;gap:4px;flex-wrap:wrap;max-width:230px;font-size:.8rem}
+.dev button{font:inherit;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:4px 8px;cursor:pointer}
+.dev button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+@media (min-width:720px){
+  .wrap{padding:0 32px}
+  .product{grid-template-columns:1fr 1fr;padding:32px;align-items:center}
+  .hero{padding:80px 0 96px}.hero::after{width:360px;height:360px;right:6%;top:-60px;box-shadow:-84px 0 0 0 var(--night) inset}
+  .hero h1{margin-top:40px}
+  .contact{flex-direction:row;align-items:center;justify-content:space-between}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 바로가기</a>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>슬리피</a>
+    <nav aria-label="주요 메뉴"><ul>
+      <li><a href="#product">제품</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">문의</a></li>
+    </ul></nav>
+  </div>
+</header>
+<main id="main">
+  <div id="top"></div>
+  <div class="hero"><div class="wrap" id="brand" aria-live="polite"></div></div>
+  <div class="wrap">
+    <div id="product" aria-live="polite"></div>
+    <section class="faq" id="faq" aria-labelledby="faq-h"><h2 id="faq-h">자주 묻는 질문</h2><div id="faq-list" aria-live="polite"></div></section>
+    <section id="contact" aria-labelledby="ct-h">
+      <div class="contact">
+        <div><h2 id="ct-h" style="margin-bottom:6px">궁금한 점이 있나요?</h2><p>제품 사용법이나 구매 관련 질문을 남겨 주세요.</p></div>
+        <a class="btn btn-main" href="mailto:hello@example.com">문의하기</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap">© 슬리피 · 문의 방식과 연락처는 확정 후 교체됩니다.</div></footer>
+
+<div class="dev" role="group" aria-label="상태 미리보기">
+  <button data-m="ok" aria-pressed="true">정상</button><button data-m="loading" aria-pressed="false">로딩</button>
+  <button data-m="empty" aria-pressed="false">빈 데이터</button><button data-m="error" aria-pressed="false">오류</button>
+  <button data-m="nolink" aria-pressed="false">구매링크 없음</button>
+</div>
+
+<script>
+// 콘텐츠는 코드와 분리된 JSON입니다. 실제 배포에서는 content.json 파일로 옮깁니다.
+var CONTENT = {
+  company:{name:"슬리피",intro:"하루를 마무리하는 시간, 슬리피가 더 편안한 밤을 만듭니다."},
+  product:{id:"sleepy-01",name:"슬리피 (제품명 자리표시)",summary:"제품 한 줄 설명이 들어갑니다. 기업이 제공한 원문으로 교체하세요.",
+    features:["특징 1","특징 2","특징 3"],usage:[],effects:[],images:[],purchaseUrl:"https://smartstore.naver.com/"},
+  faq:[
+    {id:"1",question:"제품은 어디에서 구매할 수 있나요?",answer:"제품 상세의 구매하러 가기 버튼을 누르면 외부 구매 페이지로 이동합니다."},
+    {id:"2",question:"사용 방법이 궁금해요.",answer:"제품 상세 페이지의 사용 방법에서 확인할 수 있습니다. (원문 준비 중)"},
+    {id:"3",question:"문의는 어떻게 하나요?",answer:"문의하기 버튼으로 남겨 주시면 확인 후 답변드립니다."}
+  ]
+};
+var mode="ok";
+var $=function(id){return document.getElementById(id)};
+function esc(s){var d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML}
+
+function load(){ // 서버 요청을 흉내 냅니다.
+  return new Promise(function(res,rej){
+    if(mode==="loading") return; // 로딩 상태 미리보기: 응답을 보내지 않음
+    setTimeout(function(){
+      if(mode==="error") return rej(new Error("fail"));
+      if(mode==="empty") return res({company:null,product:null,faq:[]});
+      var d=JSON.parse(JSON.stringify(CONTENT));
+      if(mode==="nolink") d.product.purchaseUrl="";
+      res(d);
+    },mode==="ok"||mode==="nolink"?500:400);
+  });
+}
+function skeleton(){
+  $("brand").innerHTML='<div class="skel" style="height:44px;width:70%;margin-top:96px"></div><div class="skel" style="height:20px;width:55%;margin:18px 0 28px"></div><div class="skel" style="height:48px;width:160px;border-radius:999px"></div>';
+  $("product").innerHTML='<div class="product" aria-busy="true"><div class="skel" style="aspect-ratio:4/3;border-radius:16px"></div><div><div class="skel" style="height:30px;width:60%"></div><div class="skel" style="height:16px;margin-top:14px"></div><div class="skel" style="height:16px;width:80%;margin-top:8px"></div><div class="skel" style="height:48px;width:170px;margin-top:22px;border-radius:999px"></div></div></div>';
+  $("faq-list").innerHTML='<div class="skel" style="height:52px;margin-bottom:10px"></div><div class="skel" style="height:52px;margin-bottom:10px"></div><div class="skel" style="height:52px"></div>';
+}
+function errBox(msg){return '<div class="state" role="alert"><p>'+msg+'</p><button class="btn btn-line" data-retry>다시 시도</button></div>'}
+function render(d){
+  var c=d.company,p=d.product;
+  $("brand").innerHTML=c?'<h1>'+esc(c.intro)+'</h1><p>'+esc(c.name)+'와 함께 오늘 밤의 휴식을 시작해 보세요.</p><a class="btn btn-moon" href="#product">제품 보러 가기</a>'
+    :'<h1 style="margin-top:96px">브랜드 소개 준비 중</h1><p>곧 슬리피의 이야기를 전해 드릴게요.</p>';
+  if(!p){
+    $("product").innerHTML='<div class="product" style="display:block"><div class="state"><p>제품 정보 준비 중입니다.</p><a class="btn btn-line" href="#contact">문의하기</a></div></div>';
+  }else{
+    var has=!!p.purchaseUrl;
+    var img=p.images&&p.images[0]?'<img src="'+esc(p.images[0])+'" alt="'+esc(p.name)+'">':'<span role="img" aria-label="제품 이미지 자리표시">제품 이미지</span>';
+    var buy=has?'<a class="btn btn-main" href="'+esc(p.purchaseUrl)+'" target="_blank" rel="noopener noreferrer">구매하러 가기<span class="sr" style="position:absolute;left:-999px"> (새 창)</span></a>'
+      :'<a class="btn" aria-disabled="true" role="link" tabindex="0">구매하러 가기</a><p class="note" role="status">구매 링크를 준비 중입니다. 궁금한 점은 <a href="#contact">문의</a>로 남겨 주세요.</p>';
+    $("product").innerHTML='<h2 style="position:absolute;left:-999px">제품 소개</h2><article class="product"><div class="pimg">'+img+'</div><div><h3>'+esc(p.name)+'</h3><p>'+esc(p.summary)+'</p><ul class="tags">'+p.features.map(function(f){return '<li>'+esc(f)+'</li>'}).join("")+'</ul>'+buy+'</div></article>';
+  }
+  $("faq-list").innerHTML=d.faq.length?d.faq.map(function(f){return '<details><summary>'+esc(f.question)+'</summary><p>'+esc(f.answer)+'</p></details>'}).join("")
+    :'<div class="state"><p>등록된 FAQ가 없습니다.</p><a class="btn btn-line" href="#contact">문의하기</a></div>';
+}
+function run(){
+  skeleton();
+  load().then(render).catch(function(){
+    $("brand").innerHTML='<h1 style="margin-top:96px">잠시 문제가 생겼어요</h1><p>내용을 불러오지 못했습니다.</p><button class="btn btn-moon" data-retry>다시 시도</button>';
+    $("product").innerHTML='<div class="product" style="display:block">'+errBox("제품 정보를 불러오지 못했습니다. 네트워크를 확인한 뒤 다시 시도해 주세요.")+'</div>';
+    $("faq-list").innerHTML=errBox("FAQ를 불러오지 못했습니다.");
+  });
+}
+document.addEventListener("click",function(e){
+  var r=e.target.closest("[data-retry]");
+  if(r){mode="ok";sync();run();return}
+  var b=e.target.closest(".dev button");
+  if(b){mode=b.dataset.m;sync();run()}
+});
+function sync(){document.querySelectorAll(".dev button").forEach(function(x){x.setAttribute("aria-pressed",x.dataset.m===mode)})}
+run();
+</script>
+</body>
+</html>
